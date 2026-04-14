@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Itenary = () => {
+const Eateries = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Itenary = () => {
   )
 }
 
-export default Itenary
+export default Eateries

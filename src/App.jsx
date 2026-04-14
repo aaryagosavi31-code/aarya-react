@@ -5,7 +5,10 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
-import Itenary from './pages/Itenary' 
+import Eateries from './pages/Eateries'
+import Header from './components/Header'
+import MultiLevelParallax from './components/MultiLevelParralx'
+import { motion, useScroll, useTransform } from "framer-motion";
 function App() {
   const router = createBrowserRouter([
     {
@@ -17,17 +20,16 @@ function App() {
       element: <Explore />
     },
     {
-      path: '/itenary',
-      element: <Itenary />
+      path: '/eateries',
+      element: <Eateries />
     },
   ])
 
 
   return (
     <>
-      <Navbar />
-      
-      <Footer />     
+      <MultiLevelParallax />
+      <Home />
     </>
   )
 }
