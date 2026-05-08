@@ -24,6 +24,21 @@ const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
             className="w-full h-full object-cover"
           />
         </motion.div>
+
+
+            <motion.div 
+        style={{ opacity: infoOpacity, y: useTransform(scrollYProgress, [0.45, 0.5], [-20, 0]) }}
+        className="absolute top-12 w-full flex justify-center gap-8 text-white z-30 font-semibold tracking-tighter"
+      >
+        <button className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Famous Places</button>
+        <div className="w-[1px ] h-4 bg-white/30 self-center"></div> {/* Divider */}
+        <button className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Explore Eateries</button>
+      </motion.div>
+
+
+
+
+
         <motion.h1
           style={{ scale: textScale }}
           className="absolute z-10 text-8xl font-black tracking-[0.3em] text-amber-400 select-none"
@@ -50,4 +65,4 @@ const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
   );
 };
 
-export default MultiLevelParallax;
+export default MultiLevelParallax

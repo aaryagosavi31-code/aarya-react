@@ -30,6 +30,7 @@ function App() {
     <>
       <MultiLevelParallax />
       <Home />
+      <Footer />
     </>
   )
 }
