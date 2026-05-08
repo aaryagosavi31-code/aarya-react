@@ -4,13 +4,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const MultiLevelParallax = () => {
   const { scrollYProgress } = useScroll();
 
-  const textScale = useTransform(scrollYProgress, [0, 0.5], [1, 75],"easeIn");
+  const textScale = useTransform(scrollYProgress, [0, 0.5], [1, 75], "easeIn");
 
   const bgOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
-  const infoOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
-  const infoY = useTransform(scrollYProgress, [0.5, 0.7], [40, 0]);
-
+  const infoOpacity = useTransform(scrollYProgress, [0.42, 0.5], [0, 1]);
+const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
   return (
     <section className="relative h-[400vh]">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-black">

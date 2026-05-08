@@ -1,6 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
 import { motion, useScroll,useTransform } from "framer-motion"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 const Home = () => {
  const places = [
     {
@@ -35,6 +40,34 @@ const Home = () => {
     }
   ];
 
+  const eateries = [
+    {
+      name: "Trishna",
+      description: "Famous for authentic Maharashtrian seafood dishes.",
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "The Table",
+      description: "A fine dining experience with modern Indian cuisine.",
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "Bombay Canteen",
+      description: "Street food elevated to fine dining.",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "Masque",
+      description: "Contemporary Indian restaurant with a focus on regional flavors.",
+      image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      name: "Aer",
+      description: "Rooftop dining with panoramic views of the city.",
+      image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
   const { scrollYProgress } = useScroll();
 
 
@@ -63,7 +96,7 @@ const Home = () => {
          initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-
+          
 
           key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
             <img src={place.image} alt={place.name} className="w-full h-48 object-cover" />
@@ -74,6 +107,38 @@ const Home = () => {
           </motion.div>
         ))}
       </motion.div>
+       <h2 className="text-4xl font-bold text-center text-gray-800 mb-8 py-10">popular Eateries</h2>
+
+       <div className="max-w-6xl mx-auto px-4">
+         <Swiper
+           modules={[Navigation, Pagination]}
+           spaceBetween={30}
+           slidesPerView={1}
+           navigation
+           pagination={{ clickable: true }}
+           autoHeight={false}
+           style={{ height: '330px' }}
+           breakpoints={{
+             640: { slidesPerView: 2 },
+             1024: { slidesPerView: 3 }
+           }}
+         >
+           {eateries.map((eatery, index) => (
+             <SwiperSlide key={index} className="h-full">
+               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                 <img src={eatery.image} alt={eatery.name} className="w-full h-48 object-cover" />
+                 <div className="p-4 flex-1 flex flex-col justify-between">
+                   <div>
+                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{eatery.name}</h3>
+                     <p className="text-gray-600">{eatery.description}</p>
+                   </div>
+                 </div>
+               </div>
+             </SwiperSlide>
+           ))}
+         </Swiper>
+       </div>
+           
     </div>
   </div>
   )
