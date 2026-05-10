@@ -1,5 +1,4 @@
-import { use, useState } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
@@ -8,30 +7,52 @@ import Explore from './pages/Explore'
 import Eateries from './pages/Eateries'
 import Header from './components/Header'
 import MultiLevelParallax from './components/MultiLevelParralx'
-import { motion, useScroll, useTransform } from "framer-motion";
+import Itenary from './pages/Itenary'
+import { ItineraryProvider } from './contexts/ItineraryContext'
+import AddToItineraryModal from './components/AddToItineraryModal'
+
 function App() {
-  const router = createBrowserRouter([
+  const routes = useRoutes([
     {
       path: '/',
-      element: <Home />
+      element: <>
+        <MultiLevelParallax />
+        <Home />
+        <Footer />
+      </>
     },
     {
       path: '/explore',
-      element: <Explore />
+      element: <>
+        <Navbar />
+        <Explore />
+        <Footer />
+      </>
     },
     {
       path: '/eateries',
-      element: <Eateries />
+      element: <>
+        <Navbar />
+        <Eateries />
+        <Footer />
+      </>
     },
+    {
+      path: '/itenary',
+      element: <>
+        <Navbar />
+        <Itenary />
+        <Footer />
+      </>
+    }
+
   ])
 
-
   return (
-    <>
-      <MultiLevelParallax />
-      <Home />
-      <Footer />
-    </>
+    <ItineraryProvider>
+      {routes}
+      <AddToItineraryModal />
+    </ItineraryProvider>
   )
 }
 

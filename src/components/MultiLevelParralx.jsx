@@ -1,17 +1,25 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MultiLevelParallax = () => {
-  const { scrollYProgress } = useScroll();
+  const navigate = useNavigate();
+  const sectionRef = useRef(null);
 
-  const textScale = useTransform(scrollYProgress, [0, 0.5], [1, 75], "easeIn");
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end center"]
+  });
+
+  const textScale = useTransform(scrollYProgress, [0, 0.5], [1, 75],"easeIn");
 
   const bgOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
-  const infoOpacity = useTransform(scrollYProgress, [0.42, 0.5], [0, 1]);
-const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
+  const infoOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
+  const infoY = useTransform(scrollYProgress, [0.5, 0.7], [40, 0]);
+
   return (
-    <section className="relative h-[400vh]">
+    <section ref={sectionRef} className="relative h-[400vh]">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-black">
 
         <motion.div
@@ -25,16 +33,14 @@ const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
           />
         </motion.div>
 
-
-            <motion.div 
+                    <motion.div 
         style={{ opacity: infoOpacity, y: useTransform(scrollYProgress, [0.45, 0.5], [-20, 0]) }}
         className="absolute top-12 w-full flex justify-center gap-8 text-white z-30 font-semibold tracking-tighter"
       >
-        <button className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Famous Places</button>
-        <div className="w-[1px ] h-4 bg-white/30 self-center"></div> {/* Divider */}
-        <button className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Explore Eateries</button>
+        <button onClick={()=>navigate('/explore')} className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Famous Places</button>
+        <div className="w-[1px ] h-4 bg-white/30 self-center"></div>
+        <button onClick={()=>navigate('/eateries')} className="text-sm uppercase tracking-[0.2em] opacity-70 hover:opacity-100 transition-opacity">Explore Eateries</button>
       </motion.div>
-
 
 
 
@@ -55,7 +61,7 @@ const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
           <p className="text-lg text-white leading-relaxed">
           A CITY THAT NEVER SLEEPS 
           </p>
-          <button className="mt-8 px-8 py-3 border-2 border-white text-white uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+          <button onClick={()=>navigate('/explore')} className="mt-8 px-8 py-3 border-2 border-white text-white uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
             Explore
           </button>
         </motion.div>
@@ -65,4 +71,4 @@ const infoY = useTransform(scrollYProgress, [0.42, 0.5], [40, 0]);
   );
 };
 
-export default MultiLevelParallax
+export default MultiLevelParallax;

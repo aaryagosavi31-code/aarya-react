@@ -1,15 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+  const navigate = useNavigate()
   return (
     <>
-    <div className="bg-white h-15 flex items-center justify-around">
+    <div className="bg-[#FF8C00]  h-15 flex items-center justify-around">
       <div></div>
-      <div className=" text-[#F5C4B3] text-size-lg">Home</div>
-      <div className=" text-[#F5C4B3] text-size-lg">Explore</div>
-      <div className=" text-[#F5C4B3] text-size-lg">Eateries</div>
+      <div onClick={()=>navigate('/')} className=" text-white font-bold text-size-lg cursor-pointer">Home</div>
+      <div onClick={()=>navigate('/explore')} className=" text-white text-size-lg cursor-pointer">Explore</div>
+      <div onClick={()=>navigate('/eateries')} className=" text-white text-size-lg cursor-pointer">Eateries</div>
       <div className=" ">
-        <button className=" text-[#7B2D00] w-25 h-12 bg-[#FFD166] rounded-[10px] font-bold">Plan Trip</button>
+        <button onClick={()=>navigate('/itenary')} className=" text-[#7B2D00] cursor-pointer w-25 h-12 bg-[#FFD166] rounded-[10px] font-bold">Plan Trip</button>
         </div>
    
     </div>

@@ -6,8 +6,10 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
- const places = [
+  const navigate = useNavigate();
+  const places = [
     {
       name: "Gateway of India",
       description: "A historic monument built during the British Raj, offering stunning views of the Arabian Sea.",
@@ -85,10 +87,15 @@ const Home = () => {
     
     <div className="py-10 bg-gray-100">
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Famous Places in Mumbai</h2>
+
+      <div className="text-center mb-8">
+        <button onClick={()=>navigate('/explore')} className="px-8 py-3 border-2 border-orange-300 text-black uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
+          Explore
+        </button>
+      </div>
+
+
       <motion.div 
-      
-
-
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
         {places.map((place, index) => (
           <motion.div 
@@ -107,7 +114,12 @@ const Home = () => {
           </motion.div>
         ))}
       </motion.div>
-       <h2 className="text-4xl font-bold text-center text-gray-800 mb-8 py-10">popular Eateries</h2>
+       <h2 className="text-4xl font-bold text-center text-gray-800 mb-8 py-1">popular Eateries</h2>
+    <div className="text-center mb-8">
+        <button onClick={()=>navigate('/eateries')} className="px-8 py-3 border-2 border-orange-300 text-black uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
+          Explore
+        </button>
+      </div>
 
        <div className="max-w-6xl mx-auto px-4">
          <Swiper
@@ -140,6 +152,16 @@ const Home = () => {
        </div>
            
     </div>
+     
+           <div className="text-center py-10">
+             <h3 className="text-4xl font-bold text-gray-800">Ready to Explore??</h3>
+             <p className="text-gray-600 h-[20px ] w-[50px ] py-2">Discover the best of Mumbai!</p>
+             <button onClick={()=>navigate('/itenary')} className="px-8 py-3 border-2 border-orange-300 text-black uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
+            Make My Itenary
+          </button>
+           </div>
+
+
   </div>
   )
 }
