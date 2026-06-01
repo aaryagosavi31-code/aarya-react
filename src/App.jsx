@@ -10,7 +10,7 @@ import MultiLevelParallax from './components/MultiLevelParralx'
 import Itenary from './pages/Itenary'
 import { ItineraryProvider } from './contexts/ItineraryContext'
 import AddToItineraryModal from './components/AddToItineraryModal'
-
+import ScrollToTop from './ScrollToTop'
 function App() {
   const routes = useRoutes([
     {
@@ -50,6 +50,7 @@ function App() {
 
   return (
     <ItineraryProvider>
+      <ScrollToTop />
       {routes}
       <AddToItineraryModal />
     </ItineraryProvider>
