@@ -1,21 +1,40 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+
+ const linkStyle = (path) => {
+  const isCurrentPage = location.pathname === path;
+
+  return `text-white text-lg cursor-pointer pb-1 transition-all duration-200
+    ${isCurrentPage ? 'font-bold border-b-2 border-white' : 'font-medium border-b-2 border-transparent hover:border-white'}`;
+};
   return (
-    <>
-    <div className="bg-[#FF8C00]  h-15 flex items-center justify-around">
-      <div></div>
-      <div onClick={()=>navigate('/')} className=" text-white font-bold text-size-lg cursor-pointer">Home</div>
-      <div onClick={()=>navigate('/explore')} className=" text-white text-size-lg cursor-pointer">Explore</div>
-      <div onClick={()=>navigate('/eateries')} className=" text-white text-size-lg cursor-pointer">Eateries</div>
-      <div className=" ">
-        <button onClick={()=>navigate('/itenary')} className=" text-[#7B2D00] cursor-pointer w-25 h-12 bg-[#FFD166] rounded-[10px] font-bold">Plan Trip</button>
+    <nav className="sticky top-0 z-50 bg-[#FF8C00]/95 backdrop-blur-md shadow-md h-16 flex items-center justify-between px-6 md:px-12">
+     
+
+      <div className="flex items-center gap-8 md:gap-12">
+        <div onClick={() => navigate('/')} className={linkStyle('/')}>
+          Home
         </div>
-   
-    </div>
-    </>
+        <div onClick={() => navigate('/explore')} className={linkStyle('/explore')}>
+          Explore
+        </div>
+        <div onClick={() => navigate('/eateries')} className={linkStyle('/eateries')}>
+          Eateries
+        </div>
+      </div>
+
+      <div>
+        <button 
+          onClick={() => navigate('/itenary')} 
+          className="text-[#7B2D00] font-bold px-5 py-2.5 bg-[#FFD166] rounded-xl shadow-sm hover:bg-[#ffe094] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+        >
+          Plan Trip
+        </button>
+      </div>
+    </nav>
   )
 }
 

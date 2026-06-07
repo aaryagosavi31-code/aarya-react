@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Footer = () => {
   return (
     <footer className="bg-[#FF8C00] text-white">
@@ -11,15 +9,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-white/90">
-            <li className="hover:text-white transition-colors">All places</li>
-            <li className="hover:text-white transition-colors">Neighbourhoods</li>
-            <li className="hover:text-white transition-colors">Hidden gems</li>
-            <li className="hover:text-white transition-colors">Beaches</li>
-          </ul>
-        </div>
+       
 
         <div>
           <h4 className="text-lg font-semibold mb-4">Get in Touch</h4>

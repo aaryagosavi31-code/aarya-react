@@ -1,4 +1,3 @@
-import React from 'react'
 import marinedrive from '../assets/marinedrive.png'
 import csmt from '../assets/csmt.png'
 import gateway from '../assets/gateway.png'
